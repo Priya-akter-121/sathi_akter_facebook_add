@@ -551,15 +551,18 @@ function clearError(){
    ৮. নাম্বার ভ্যালিডেশন
 ========================================================== */
 
-function isValidPhoneNumber(value){
-    const clean = value.replace(/[\s\-()+]/g, "");
-
-    if (/^01[3-9]\d{8}$/.test(clean)) return true;        
-    if (/^8801[3-9]\d{8}$/.test(clean)) return true;      
-    if (/^\+?8801[3-9]\d{8}$/.test(clean)) return true;   
-
-    return false;
+function validateInput(value) {
+    // শুধুমাত্র সংখ্যাগুলো আলাদা করা
+    const digitsOnly = value.replace(/\D/g, '');
+    
+    // ৭ থেকে ১৫ ডিজিট নিশ্চিত করা
+    if (digitsOnly.length >= 7 && digitsOnly.length <= 15) {
+        return true; // ভ্যালিড
+    } else {
+        return false; // ইনভ্যালিড
+    }
 }
+    
 
 
 /* ==========================================================
